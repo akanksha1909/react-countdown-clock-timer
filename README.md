@@ -22,7 +22,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Timer } from 'react-countdown-clock-timer';
 
-export default function () {
+const App = () => {
   return (
     <div className='timer-container'>
       <Timer
@@ -49,4 +49,5 @@ export default function () {
     </div>
   )
 }
+ReactDOM.render(<App />, document.getElementById('root'))
 ```
