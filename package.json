@@ -1,6 +1,6 @@
 {
   "name": "react-countdown-clock-timer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/bundle.js",
   "scripts": {
@@ -8,7 +8,9 @@
     "start": "webpack-dev-server",
     "build": "NODE_ENV=production webpack --mode=production"
   },
-  "publishConfig": { "registry": "https://registry.npmjs.org/" },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/akanksha1909/react-countdown-clock-timer.git"
