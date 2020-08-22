@@ -15,8 +15,20 @@
     "type": "git",
     "url": "git+https://github.com/akanksha1909/react-countdown-clock-timer.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "react-component",
+    "react with typescript timer",
+    "timer",
+    "react timer",
+    "timer component",
+    "timer",
+    "react countdown timer"
+  ],
+  "author": {
+    "name": "Akanksha Singh",
+    "email": "akanksha1909singh@gmail.com"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/akanksha1909/react-countdown-clock-timer/issues"
