@@ -51,3 +51,17 @@ const App = () => {
 }
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
+## Parameters
+
+| Name                              | Description                                                                                                      | Required  | Type     |
+|-------------------------------------|------------------------------------------------------------------------------------------------------------------|----------|----------|
+| durationInSeconds   | Duration for which the timer runs                          | True     | integer  |
+| formatted   | Renders the timer in a formatted way (Example: 1h 51m 22s)                         | False     | boolean  |
+| timerId   | Timer resets when timerId changes                         | False     | any  |
+| showPauseButton                 | Shows a button to pause/resume the timer if set to true | False    | boolean  |
+| showResetButton                 | Shows a button to reset the timer if set to true                            | False     | boolean  |
+| onStart            | A callback function to run when the timer starts                   | False     | ()=>void  |
+| onFinish               | A callback function to run when timer finishes                                       | False | ()=>void |
+| onPause   | A callback function to run when timer is paused | False | ()=>void |
+| onResume               | A callback function to run when timer is resumed                                     | False | ()=>void |
+| onReset               | A callback function to run when the timer is reset                                        | False | ()=>void |
