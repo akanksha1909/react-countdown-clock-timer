@@ -8,6 +8,7 @@
     "start": "webpack-dev-server",
     "build": "NODE_ENV=production webpack --mode=production"
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/akanksha1909/react-countdown-clock-timer.git"
