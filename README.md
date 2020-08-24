@@ -72,9 +72,9 @@ ReactDOM.render(<App />, document.getElementById('root'))
 ## Styling
 We've provided class names for the following elements which can be used to add styling to them.
 
-- Timer div - `timer-wrapper`
-- div wrapping the Pause and Reset buttons -  `buttons-wrapper`
-- Pause button  - `pause-button`
-- Reset button  - `reset-button`
+- div wrapping the Timer - `timer-wrapper`
+- div wrapping the Pause and Reset buttons - `buttons-wrapper`
+- Pause button - `pause-button`
+- Reset button - `reset-button`
 
 
