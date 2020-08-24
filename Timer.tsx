@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useState, useEffect } from 'react'
 
 export interface TimerProps {
-	durationInSeconds: number,
+	durationInSeconds?: number,
 	timerId?: any,
 	formatted?: boolean,
 	showPauseButton?: boolean,
@@ -16,7 +16,7 @@ export interface TimerProps {
 
 export const Timer = (props: TimerProps) => {
 
-	const [duration, setDuration] = useState(props.durationInSeconds)
+	const [duration, setDuration] = useState(props.durationInSeconds ?? 0)
 	const [paused, setPauseTimer] = useState(false)
 	const [firstRender, setFirstRender] = useState(true)
 
@@ -27,19 +27,22 @@ export const Timer = (props: TimerProps) => {
 
 	useEffect(() => {
 		if (!firstRender) resetTimer()
-	}, [props.timerId])
+	}, [props.timerId, props.durationInSeconds])
 
 	useEffect(() => {
-		if (!firstRender) paused ? props.onPause() : props.onResume()
+		if (!firstRender) {
+			const { onPause, onResume } = props
+			paused ? (onPause && onPause()) : (onResume && onResume())
+		}
 	}, [paused])
 
 	useEffect(() => {
-		if (props.onStart) props.onStart() 
+		if (props.onStart) props.onStart()
 		setFirstRender(false)
 	}, [])
 
 	const updateTimer = () => {
-		setDuration(duration => duration > 0 ? duration - 1 : duration)
+		setDuration(duration => duration > 0 ? duration - 0.1 : duration)
 	}
 
 	useEffect(() => {
@@ -49,7 +52,7 @@ export const Timer = (props: TimerProps) => {
 	useEffect(() => {
 		let intervalTimeOutId: NodeJS.Timeout
 		if (!paused) {
-			intervalTimeOutId = setInterval(updateTimer, 1000)
+			intervalTimeOutId = setInterval(updateTimer, 100)
 		}
 		return () => {
 			if (intervalTimeOutId) {
@@ -62,9 +65,12 @@ export const Timer = (props: TimerProps) => {
 		time.length === 1 ? '0' + time : time
 	)
 
-	let hours = Math.floor(duration / 3600).toString()
-	let minutes = Math.floor((duration / 60) % 60).toString()
-	let seconds = Math.floor(duration % 60).toString()
+	const integerDuration = Math.ceil(duration)
+
+	let hours = Math.floor(integerDuration / 3600).toString()
+	let minutes = Math.floor((integerDuration / 60) % 60).toString()
+	let seconds = Math.floor(integerDuration % 60).toString()
+
 
 	let formattedTimeString = ''
 	formattedTimeString += (hours !== '0') ? hours + 'h ' : ''
@@ -76,7 +82,7 @@ export const Timer = (props: TimerProps) => {
 	seconds = prependZeroIfSingleDigit(seconds)
 
 	const showFormattedTimer = <span>{formattedTimeString}</span>
-	const showUnformattedTimer = <span>{hours}::{minutes}::{seconds}</span>
+	const showUnformattedTimer = <span>{hours}:{minutes}:{seconds}</span>
 
 	const togglePause = () => setPauseTimer(paused => !paused)
 
