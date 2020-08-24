@@ -17,7 +17,7 @@ To install, you can use [npm](https://npmjs.org/):
 
 ## Examples
 
-Here is a simple example of react-timer being used in an app.
+Here is a simple example of react-countdown-clock-timer being used in an app.
 
 ```jsx
 import React from 'react';
@@ -33,19 +33,19 @@ const App = () => {
       showPauseButton={true}
       showResetButton={true}
       onStart = {()=> {
-          console.log('Triggers when timer starts')
+        console.log('Triggered when the timer starts')
       }}
       onPause = {()=> {
-          console.log('Triggers when timer is paused')
+        console.log('Triggered when the timer is paused')
       }}
       onFinish = {()=> {
-            console.log('Triggers when timer is finished')
+        console.log('Triggered when the timer finishes')
       }}
       onReset = {()=> {
-           console.log('Triggers when timer resets')
+        console.log('Triggered when the timer is reset')
       }}
       onResume = {()=> {
-            console.log('Triggers when timer resumes')
+        console.log('Triggered when the timer is resumed')
       }}
       />
     </div>
