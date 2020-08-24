@@ -5,6 +5,8 @@ react-countdown-clock-timer provides a timer functionality using reactJS.
 
 * [Installation](#installation)
 * [Examples](#examples)
+* [Parameters](#parameters)
+* [Styling](#styling)
 
 ## Installation
 
@@ -56,7 +58,7 @@ ReactDOM.render(<App />, document.getElementById('root'))
 | Name                              | Description                                                                                                      | Required  | Type     |
 |-------------------------------------|------------------------------------------------------------------------------------------------------------------|----------|----------|
 | durationInSeconds   | Duration for which the timer runs                          | True     | integer  |
-| formatted   | Renders the timer in a formatted way (Example: 1h 51m 22s)                         | False     | boolean  |
+| formatted   | Renders the timer in a formatted way (Formatted: 51m 22s, Unformatted: 00:51:22)                         | False     | boolean  |
 | timerId   | Timer resets when timerId changes                         | False     | any  |
 | showPauseButton                 | Shows a button to pause/resume the timer if set to true | False    | boolean  |
 | showResetButton                 | Shows a button to reset the timer if set to true                            | False     | boolean  |
@@ -65,3 +67,14 @@ ReactDOM.render(<App />, document.getElementById('root'))
 | onPause   | A callback function to run when timer is paused | False | ()=>void |
 | onResume               | A callback function to run when timer is resumed                                     | False | ()=>void |
 | onReset               | A callback function to run when the timer is reset                                        | False | ()=>void |
+
+
+## Styling
+We've provided class names for the following elements which can be used to add styling to them.
+
+- Timer div - `timer-wrapper`
+- div wrapping the Pause and Reset buttons -  `buttons-wrapper`
+- Pause button  - `pause-button`
+- Reset button  - `reset-button`
+
+
