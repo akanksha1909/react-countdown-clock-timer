@@ -42,7 +42,7 @@ export const Timer = (props: TimerProps) => {
 	}, [])
 
 	const updateTimer = () => {
-		setDuration(duration => duration > 0 ? duration - 0.1 : duration)
+		setDuration(duration => duration > 0 ? (duration * 10 - 1) / 10 : duration)
 	}
 
 	useEffect(() => {
