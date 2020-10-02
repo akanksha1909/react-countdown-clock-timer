@@ -7,6 +7,7 @@ export interface TimerProps {
 	formatted?: boolean,
 	showPauseButton?: boolean,
 	showResetButton?: boolean,
+	isPaused?: boolean,
 	onStart?: () => void,
 	onPause?: () => void,
 	onFinish?: () => void,
@@ -17,7 +18,7 @@ export interface TimerProps {
 export const Timer = (props: TimerProps) => {
 
 	const [duration, setDuration] = useState(props.durationInSeconds ?? 0)
-	const [paused, setPauseTimer] = useState(false)
+	const [paused, setPaused] = useState(false)
 	const [firstRender, setFirstRender] = useState(true)
 
 	const resetTimer = () => {
@@ -35,6 +36,10 @@ export const Timer = (props: TimerProps) => {
 			paused ? (onPause && onPause()) : (onResume && onResume())
 		}
 	}, [paused])
+
+	useEffect(() => {
+		setPaused(!!props.isPaused)
+	}, [props.isPaused])
 
 	useEffect(() => {
 		if (props.onStart) props.onStart()
@@ -84,7 +89,7 @@ export const Timer = (props: TimerProps) => {
 	const showFormattedTimer = <span>{formattedTimeString}</span>
 	const showUnformattedTimer = <span>{hours}:{minutes}:{seconds}</span>
 
-	const togglePause = () => setPauseTimer(paused => !paused)
+	const togglePause = () => setPaused(paused => !paused)
 
 	const pauseButtonText = paused ? 'Resume' : 'Pause'
 

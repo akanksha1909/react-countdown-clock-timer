@@ -10,10 +10,13 @@ react-countdown-clock-timer provides a timer functionality using reactJS.
 
 ## Installation
 
-To install, you can use [npm](https://npmjs.org/):
+To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com/):
 
-
-    $  npm install react-countdown-clock-timer
+    $ npm install react-countdown-clock-timer
+    
+    OR
+    
+    $ yarn add react-countdown-clock-timer
 
 ## Examples
 
@@ -30,8 +33,10 @@ const App = () => {
       <Timer
       durationInSeconds={120}
       formatted={true}
+      isPaused={false}
       showPauseButton={true}
       showResetButton={true}
+      
       onStart = {()=> {
         console.log('Triggered when the timer starts')
       }}
@@ -55,19 +60,19 @@ ReactDOM.render(<App />, document.getElementById('root'))
 ```
 ## Parameters
 
-| Name                              | Description                                                                                                      | Required  | Type     |
+| Name                              | Description                                                                                                      | Type     | Default Value |
 |-------------------------------------|------------------------------------------------------------------------------------------------------------------|----------|----------|
-| durationInSeconds   | Duration for which the timer runs                          | True     | integer  |
-| formatted   | Renders the timer in a formatted way (Formatted: 51m 22s, Unformatted: 00:51:22)                         | False     | boolean  |
-| timerId   | Timer resets when timerId changes                         | False     | any  |
-| showPauseButton                 | Shows a button to pause/resume the timer if set to true | False    | boolean  |
-| showResetButton                 | Shows a button to reset the timer if set to true                            | False     | boolean  |
-| onStart            | A callback function to run when the timer starts                   | False     | ()=>void  |
-| onFinish               | A callback function to run when timer finishes                                       | False | ()=>void |
-| onPause   | A callback function to run when timer is paused | False | ()=>void |
-| onResume               | A callback function to run when timer is resumed                                     | False | ()=>void |
-| onReset               | A callback function to run when the timer is reset                                        | False | ()=>void |
-
+| durationInSeconds   | Duration for which the timer runs                             | int  | 0 |
+| formatted   | Renders the timer in a formatted way (Formatted: 51m 22s, Unformatted: 00:51:22)                       | bool  | false | 
+| timerId   | Timer resets when timerId changes                             | any  | undefined | 
+| isPaused               | The parent component can pause/resume the timer using this prop                                     | bool | false |
+| showPauseButton                 | Shows a button to pause/resume the timer if set to true    | bool  | false |
+| showResetButton                 | Shows a button to reset the timer if set to true                                 | bool  | false |
+| onStart            | A callback function to run when the timer starts                       | ()=>void  | undefined | 
+| onFinish               | A callback function to run when timer finishes                                       | ()=>void |undefined |
+| onPause   | A callback function to run when timer is paused | ()=>void | undefined | 
+| onResume               | A callback function to run when timer is resumed                              | ()=>void | undefined | 
+| onReset               | A callback function to run when the timer is reset                                       | ()=>void |undefined | 
 
 ## Styling
 We've provided class names for the following elements which can be used to add styling to them.
@@ -76,5 +81,3 @@ We've provided class names for the following elements which can be used to add s
 - div wrapping the Pause and Reset buttons - `buttons-wrapper`
 - Pause button - `pause-button`
 - Reset button - `reset-button`
-
-
