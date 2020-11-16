@@ -9,10 +9,10 @@ export interface TimerProps {
 	showResetButton?: boolean,
 	isPaused?: boolean,
 	onStart?: () => void,
-	onPause?: () => void,
+	onPause?: (args: number) => void,
 	onFinish?: () => void,
-	onReset?: () => void,
-	onResume?: () => void
+	onReset?: (args: number) => void,
+	onResume?: (args: number) => void
 }
 
 export const Timer = (props: TimerProps) => {
@@ -21,8 +21,10 @@ export const Timer = (props: TimerProps) => {
 	const [paused, setPaused] = useState(false)
 	const [firstRender, setFirstRender] = useState(true)
 
+	const durationUpto2Decimal = +duration.toFixed(2)
+
 	const resetTimer = () => {
-		if (props.onReset) props.onReset()
+		if (props.onReset) props.onReset(durationUpto2Decimal)
 		setDuration(props.durationInSeconds)
 	}
 
@@ -33,7 +35,7 @@ export const Timer = (props: TimerProps) => {
 	useEffect(() => {
 		if (!firstRender) {
 			const { onPause, onResume } = props
-			paused ? (onPause && onPause()) : (onResume && onResume())
+			paused ? (onPause && onPause(durationUpto2Decimal)) : (onResume && onResume(durationUpto2Decimal))
 		}
 	}, [paused])
 
@@ -47,17 +49,17 @@ export const Timer = (props: TimerProps) => {
 	}, [])
 
 	const updateTimer = () => {
-		setDuration(duration => duration > 0 ? (duration * 10 - 1) / 10 : duration)
+		setDuration(duration => duration > 0 ? (duration - 0.01) : duration)
 	}
 
 	useEffect(() => {
-		if (duration === 0) props.onFinish ? props.onFinish() : null
+		if (duration <= 0) props.onFinish ? props.onFinish() : null
 	}, [duration])
 
 	useEffect(() => {
 		let intervalTimeOutId: NodeJS.Timeout
 		if (!paused) {
-			intervalTimeOutId = setInterval(updateTimer, 100)
+			intervalTimeOutId = setInterval(updateTimer, 10)
 		}
 		return () => {
 			if (intervalTimeOutId) {

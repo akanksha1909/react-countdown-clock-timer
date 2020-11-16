@@ -20,7 +20,7 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com/
 
 ## Examples
 
-Here is a simple example of react-countdown-clock-timer being used in an app.
+Here is a simple example of react-countdown-clock-timer being used in an app. You can also get remaining duration with onPause, onResume and onReset callbacks.
 
 ```jsx
 import React from 'react';
@@ -40,17 +40,17 @@ const App = () => {
       onStart = {()=> {
         console.log('Triggered when the timer starts')
       }}
-      onPause = {()=> {
-        console.log('Triggered when the timer is paused')
+      onPause = {(remainingDuration)=> {
+        console.log('Triggered when the timer is paused', remainingDuration)
       }}
       onFinish = {()=> {
         console.log('Triggered when the timer finishes')
       }}
-      onReset = {()=> {
-        console.log('Triggered when the timer is reset')
+      onReset = {(remainingDuration)=> {
+        console.log('Triggered when the timer is reset', remainingDuration)
       }}
-      onResume = {()=> {
-        console.log('Triggered when the timer is resumed')
+      onResume = {(remainingDuration)=> {
+        console.log('Triggered when the timer is resumed', remainingDuration)
       }}
       />
     </div>
