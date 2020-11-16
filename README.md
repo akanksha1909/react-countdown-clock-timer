@@ -20,7 +20,7 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com/
 
 ## Examples
 
-Here is a simple example of react-countdown-clock-timer being used in an app. You can also get remaining duration with onPause, onResume and onReset callbacks.
+Here is a simple example of react-countdown-clock-timer being used in an app. You can also get `remaining duration` with onPause, onResume and onReset callbacks.
 
 ```jsx
 import React from 'react';
